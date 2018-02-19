@@ -2,21 +2,21 @@
 //No puedes utilizar "loops" en ninguna de las funciones (for, while, do while)
 //Utiliza los metodos para arreglos .map, .reduce, .filter, .forEach y .sort
 
-// 1. Capitalize
+// 1. Capitalize                                   ***********LISTO*************
 /*Escribe una función capitalize que tome una palabra como string y retorne
  *el mismo string con todas sus letras en mayusculas
  * ejem: capitalize("whoop") --->  "WHOOP" */
 
 var capitalize = function(str) {
   //Escribe tu codigo aqui
-  let letterUpper = str.split(",").map( letter =>toUpperCase(letter) )
+  let letterUpper = str.split(",").map( letter => letter.toUpperCase() )
   // No puedes utilizar directamente sobre str toUpperCase
   return letterUpper
 
 }
 
 //Utiliza console.log() para visualizar el funcionamiento de tu código.
-var outputCapitalize = capitalize("whoop")
+var outputCapitalize = capitalize("whoop");
 console.log(outputCapitalize); //----> "WHOOP";
 
 
@@ -27,9 +27,13 @@ console.log(outputCapitalize); //----> "WHOOP";
   NOTA: Debes hacer uso de la funcion capitalize();*/
 
 var swapCase = function(str) {
-  // Escribe tu codigo aquí
+  let palabra = str.split(' ').forEach( element => element % 2 == 0 )
+  console.log(palabra);
+  return palabra
+  };
 
-}
+  //capitalize(str)
+
 
 var outputSwapCase = swapCase("hey gurl, lets javascript together sometime")
 console.log(outputSwapCase); //---> "HEY gurl, LETS javascript TOGETHER sometime"
@@ -80,7 +84,7 @@ var outputOdd = oddNumbers(numberArray);
 console.log(outputOdd); // ---> [1, 3, 5, 7, 9]
 
 
-// 6. Reducer
+// 6. Reducer                                      ***********LISTO*************
 /*Escribe una función reducer() que tome un arreglo de numeros y retorne un
   arreglo de dos elementos, el primer elemento será la suma de los números pares y el
   segundo elemento la suma de los números impares
@@ -101,13 +105,11 @@ var outputReducer = reducer([1,2,3,4,5,6,7,8,9]);
 console.log(outputReducer); // ---> [ 20, 25 ]
 
 
-// 7. arrayt with strings 'javascript'
+// 7. arrayt with strings 'javascript'             ***********LISTO*************
 /*Manipula el siguiente array y devuelve un nuevo array que contenga los strings 'javascript',
   debes concatenar dos difrentes métodos para arrays.
   Apartir de este ejercicio te toca darle nombre y forma a tus funciones y sus respectivos outputs.
   ejem. output --> ['javascript', 'javascript', 'javascript']*/
-
-
 
 var persons = [
   {id : 1, name : "John", tags : "javascript"},
@@ -117,18 +119,47 @@ var persons = [
   {id : 5, name : "Alex", tags : "java"}
 ];
 
-// 8. Render in DOM
+var arrayString = function(array) {
+  var newArray = array.filter(function (element) {
+    //element es cada uno de los objetos.
+    return element.tags == 'javascript'
+  })
+  return newArray.map(function (element) {
+    //En newArray.mapse está concatenando al nuevo arreglo (que surge al aplicarle la función filter) el método .map (para obtener el valor de los tags.)
+    return element.tags //newArrayJS
+  })
+};
+//Ejecutando la función arrayString()
+var stringTagsPersons = arrayString(persons);
+console.log(stringTagsPersons);
+
+// 8. Render in DOM                                ***********LISTO*************
 /*Usando la data anterior y alguno de los métodos, pinta en el index.html a través del DOM
  cada una de las personas y todas sus propiedades */
 
-var paintPersons = function() {
-
+ var container = document.getElementById('container-ex7');
+var paintPersons = function(array) {
+  array.forEach(function(element){
+    var textPerson = element.id + ' ' + element.name + ' ' + element.tags;
+    var para = document.createElement("P");
+    var divText = document.createElement("div");
+    var name = document.createElement('p');
+    var id = document.createElement('p');
+    var tags = document.createElement('p');
+    name.innerText = element.name;
+    id.innerText = element.id;
+    tags.innerText = element.tags;
+    divText.appendChild(id);
+    divText.appendChild(name);
+    divText.appendChild(tags);
+    container.appendChild(divText);
+  })
 }
 
 var outputPaintPerson = paintPersons(persons);
 
 // 9. Total de edad en 'años perro'
-/*Considera la siguiente variables data. Nosotros tenmos un arreglo de objetos, cada objeto representa
+/*Considera la siguiente variables data. Nosotros tenemos un arreglo de objetos, cada objeto representa
   una mascota. Las mascotas tienen un nombre, una edad y un tipo.
   Instrucciones:
   1. Selecciona solo a los perros.
@@ -160,6 +191,19 @@ var data = [
     type: 'dog'
   },
 ];
+
+var paintPersons = function(array) {
+  array.forEach(function(element){
+    var textPerson = element.name + ' ';
+
+    //document.getElementById('container-ex7').append(textPerson);
+  })
+  //$('#container-ex7').append(pTextPerson);
+}
+
+var outputAge = paintPersons(data);
+
+
 // 10. Render in DOM
 /*Usando la data anterior y alguno de los métodos, pinta en el index.html a través del DOM
  cada una de las mascotas junto con todas su propiedades*/
