@@ -9,7 +9,9 @@
 
 var capitalize = function(str) {
   //Escribe tu codigo aqui
+  let letterUpper = str.split(",").map( letter =>toUpperCase(letter) )
   // No puedes utilizar directamente sobre str toUpperCase
+  return letterUpper
 
 }
 
@@ -21,12 +23,12 @@ console.log(outputCapitalize); //----> "WHOOP";
 // 2. swapCase
 /*Ahora escribe una función llamada swapCase que tome una oración como string y
   retorne el string alternando una palabra en mayúsculas y otra en minúsculas
-  ejem: swapCase('hey gurl, lets javascript together sometime') ---> "HEY gurl, LETS javascript TOGETHER sometime" 
+  ejem: swapCase('hey gurl, lets javascript together sometime') ---> "HEY gurl, LETS javascript TOGETHER sometime"
   NOTA: Debes hacer uso de la funcion capitalize();*/
 
 var swapCase = function(str) {
   // Escribe tu codigo aquí
-  
+
 }
 
 var outputSwapCase = swapCase("hey gurl, lets javascript together sometime")
@@ -50,30 +52,32 @@ var outputShiftLetters = shiftLetters('hello');
 console.log(outputShiftLetters); // ---> 'ifmmp'
 
 
-// 4. Even numbers
+// 4. Even numbers                                 ***********LISTO*************
 //Manipula el siguiente array y devuelve un nuevo array que contenga solo a los números pares
 // ejem. evenNumber([1,2,3,4,5,6,7,8,9,10]) ---> [2, 4, 6, 8, 10]
 
 var numberArray = [1,2,3,4,5,6,7,8,9,10];
 
 var evenNumbers = function(array) {
-  //Escribe tu codigo aquí.
+  let numbersPair = array.filter( number => number % 2 == 0 )
+  return numbersPair
 };
 
 var outputEvenNumbers = evenNumbers(numberArray);
 console.log(outputEvenNumbers); // ---> [2, 4, 6, 8, 10]
 
 
-// 5. Odd numbers
+// 5. Odd numbers                                  ***********LISTO*************
 //Ahora  manipulando el mismo array devuelve un nuevo array que contenga solo a los números impares.
 // ejem. oddNumbers([1,2,3,4,5,6,7,8,9,10]) ---> [1, 3, 5, 7, 9]
 
 var oddNumbers = function(array) {
-  //Escribe tu codigo aquí
+  let numbersOdd = array.filter( number => number % 2 )
+  return numbersOdd
 };
 
 var outputOdd = oddNumbers(numberArray);
-console.log(outputOddNumbers); // ---> [1, 3, 5, 7, 9]
+console.log(outputOdd); // ---> [1, 3, 5, 7, 9]
 
 
 // 6. Reducer
@@ -84,8 +88,12 @@ console.log(outputOddNumbers); // ---> [1, 3, 5, 7, 9]
 
 Nota: Debes de hacer uso de las funciones de evenNumbers() y oddNumbers.*/
 
-var reducer = function() {
-  //Escribe tu codigo aquí
+var reducer = function(array) {
+  let evenSum = evenNumbers(array).reduce((prev, cur) => prev + cur, 0)
+  let oddSum = oddNumbers(array).reduce((prev, cur) => prev + cur, 0)
+  var total = [];
+  total.push(evenSum, oddSum);
+  return total
 
 }
 
@@ -97,13 +105,13 @@ console.log(outputReducer); // ---> [ 20, 25 ]
 /*Manipula el siguiente array y devuelve un nuevo array que contenga los strings 'javascript',
   debes concatenar dos difrentes métodos para arrays.
   Apartir de este ejercicio te toca darle nombre y forma a tus funciones y sus respectivos outputs.
-  ejem. output --> ['javascript', 'javascript', 'javascript']*/ 
+  ejem. output --> ['javascript', 'javascript', 'javascript']*/
 
 
 
 var persons = [
-  {id : 1, name : "John", tags : "javascript"}, 
-  {id : 2, name : "Alice", tags : "javascript"}, 
+  {id : 1, name : "John", tags : "javascript"},
+  {id : 2, name : "Alice", tags : "javascript"},
   {id : 3, name : "Roger", tags : "java"},
   {id : 4, name : "Adam", tags : "javascript"},
   {id : 5, name : "Alex", tags : "java"}
@@ -118,16 +126,16 @@ var paintPersons = function() {
 }
 
 var outputPaintPerson = paintPersons(persons);
-  
-// 9. Total de edad en 'años perro' 
+
+// 9. Total de edad en 'años perro'
 /*Considera la siguiente variables data. Nosotros tenmos un arreglo de objetos, cada objeto representa
   una mascota. Las mascotas tienen un nombre, una edad y un tipo.
-  Instrucciones: 
+  Instrucciones:
   1. Selecciona solo a los perros.
   2. Transforma su edad en años perros (multiplica cada una por siete).
   3. Suma el resultado.
-  
-  ejem. output --> 84 
+
+  ejem. output --> 84
 */
 
 var data = [
@@ -152,8 +160,7 @@ var data = [
     type: 'dog'
   },
 ];
-
-// 10. Render in DOM 
+// 10. Render in DOM
 /*Usando la data anterior y alguno de los métodos, pinta en el index.html a través del DOM
  cada una de las mascotas junto con todas su propiedades*/
 
@@ -168,6 +175,3 @@ var outputPaintPets = paintPets(data);
   ejem. output --> ['Apple', 'Banana', 'Kiwi', 'Orange'];*/
 
 var fruits = ['Banana', 'Orange', 'Apple', 'Kiwi'];
-
-
-
